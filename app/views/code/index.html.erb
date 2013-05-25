@@ -1,0 +1,12 @@
+<h1>Your Access Codes</h1>
+<ul id="codeList">
+  <% session[:codes].each do |c| %>
+    <li id="c-<%= c %>"><%= c %> - <%= link_to "Remove", code_destroy_path(:c => c), :remote => true%></li>
+  <% end %>
+</ul>
+
+<h3>Add a Code</h3>
+<%= form_tag code_create_path, :remote => true do %>
+  <%= text_field_tag :c %><br/>
+  <%= submit_tag "Add Code", :class => 'btn btn-success' %>
+<% end %>

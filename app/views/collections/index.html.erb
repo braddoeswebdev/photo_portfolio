@@ -1,0 +1,17 @@
+<h1>Listing collections</h1>
+
+<table class="table">
+<% @collections.each do |collection| %>
+  <tr>
+    <td><%= link_to collection.name, collection %>
+      <% if collection.cover != nil %>
+        <%= image_tag collection.cover.image.url(:thumb) %>
+      <% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_collection_path(collection), :class => 'btn btn-mini btn-inverse' %></td>
+    <td><%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New Collection', new_collection_path, :class => 'btn btn-block btn-primary' %>

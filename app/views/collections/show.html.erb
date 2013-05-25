@@ -1,0 +1,43 @@
+<h1><%= @collection.name %></h1>
+<p>
+<%= markdown @collection.notes %>
+</p>
+
+
+<div id="photogrid">
+  <% count = 0 %>
+  <% @collection.photos.in_groups_of(6).each do |ps| %>
+    <div class="row-fluid">
+      <% ps.each do |photo| %>
+        <% if photo %>
+          <div class="span2">
+            <%= link_to image_tag(photo.image.url(:thumb), :style => 'margin: 0 auto;'), photo.image.url(:medium), :rel => 'lightbox', :title => photo.notes %>
+            <% if session[:codes].include?(SUPER_SECRET_CODE) %>
+              <p><%= form_for @collection do |f| %><%= link_to "X", photo, :method => :delete, :class => 'btn btn-mini btn-danger', :confirm => 'Are you sure?' %>
+              <%= f.hidden_field :cover_id, :value => photo.id %><%= submit_tag "Promote", :class => 'btn btn-mini btn-primary' %><% end %></p>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% if session[:codes].include? SUPER_SECRET_CODE %>
+<div class="accordion" id="accordion2" style="margin-top: 8px;">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Add a Photo</a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= form_for Photo.new, :html => {:multipart => true} do |f| %>
+          <%= f.hidden_field :collection_id, :value => @collection.id %>
+          <%= f.file_field :image %>
+          <%= f.text_field :notes %>
+          <%= f.submit :class => 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

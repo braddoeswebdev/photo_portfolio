@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bootstrap.css";
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700|Droid+Sans+Mono|Droid+Sans:400,700);
+
+body {
+  padding: 20px;
+  font-family: 'Droid Serif', serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+.box {
+  padding: 8px;
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.container-fluid {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  background-color: rgba(128,128,128,0.4);
+}
+
+a {
+  color: #0c0; 
+
+}
+
+.btn {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+.nav > li > a, .nav > li > a {
+  background-color: #333;
+  text-shadow: none;
+}
+
+.nav li + .nav-header {
+  background-color: #333;
+  margin-top: 0;
+  padding-top: 16px;
+  border-bottom: thin solid #444;
+}
+
+.table th, .table td {
+  border-top: none;
+}
+
+textarea {
+  height: 240px;
+}
+
+#sadNav {
+  background-color: #333;
+  padding: 3px 15px;
+}
+
+#navlist {
+  background-color: #333;
+}
+
+.placeholder {
+  width: 100px;
+  height: 70px;
+  background-color: #999;
+  border: thin outset black;
+  margin: auto;
+  font-size: 50px;
+  padding-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 55px;
+  color: #aaa;
+}

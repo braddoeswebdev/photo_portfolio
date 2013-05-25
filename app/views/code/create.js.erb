@@ -1,0 +1,1 @@
+$("#codeList").append('<li id="c-<%= @c %>"><%= @c %> - <%= link_to "Remove", code_destroy_path(c: @c), :remote => true%></li>').fadeIn();

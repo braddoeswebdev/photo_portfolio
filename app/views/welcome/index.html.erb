@@ -1,0 +1,14 @@
+
+
+<% @collections.in_groups_of(3).each do |group| %>
+  <div class="row-fluid">
+    <% group.each do |collection| %>  
+      <% if collection %>
+        <div class="span4" style="text-align: center;">
+          <div style="text-align: center;"><%= collection.cover ? image_tag(collection.cover.image.url(:thumb)) : '<div class="placeholder">?</div>'.html_safe  %></div>
+          <%= link_to collection.name, collection %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
